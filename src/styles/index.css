@@ -1,0 +1,19 @@
+/*
+  counterfoil-kit styles
+  -----------------------
+  This is the main entry point for importing styles from the library.
+  
+  It includes:
+  - Semantic design tokens (CSS variables)
+  - Tailwind base, components, and utilities
+  
+  Import this file in your consuming application:
+    import 'counterfoil-kit/styles'
+  
+  Or import separately:
+    import 'counterfoil-kit/styles/semanticTokens.css'  // tokens only
+    import 'counterfoil-kit/styles/base.css'            // Tailwind only
+*/
+
+@import "./semanticTokens.css";
+@import "./base.css";

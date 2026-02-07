@@ -1,0 +1,48 @@
+@config "../../tailwind.config.cjs";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override Preflight's button padding reset to allow semantic token padding utilities */
+@layer base {
+  button {
+    padding: revert;
+  }
+}
+
+/*
+  base.css
+  --------
+  This file is the **Tailwind plumbing layer** for the application.
+
+  Its role is to:
+  - Activate Tailwind’s base, component, and utility layers
+  - Explicitly bind Tailwind to the project’s config via @config
+  - Contain only framework-facing setup, not design meaning
+
+  What this file intentionally does NOT do:
+  - It does NOT define colors, spacing, typography, or design tokens
+  - It does NOT contain semantic meaning or brand decisions
+  - It does NOT import semantic token files
+
+  Design meaning lives elsewhere.
+
+  This separation is intentional:
+  - Keeping Tailwind setup “boring” and replaceable
+  - Preventing design semantics from being buried in framework plumbing
+  - Making it easy to reason about what is custom vs what is infrastructure
+
+  If you are looking for:
+  - Color definitions
+  - Theme semantics (primary, secondary, surface, etc.)
+  - Light/dark mode values
+
+  See: semanticTokens.css
+
+  NOTE:
+  Tailwind v4 requires an explicit @config directive in the input CSS
+  in order to read a custom configuration file. Because PostCSS enforces
+  strict @import ordering, semantic tokens are loaded separately at the
+  application entry point rather than inside this file.
+*/

@@ -1,0 +1,337 @@
+/*
+  semanticTokens.css
+  ------------------
+  This file defines the **semantic design tokens** for the application.
+
+  These tokens express *meaning*, not implementation:
+  - primary / secondary / surface
+  - text roles
+  - borders, accents, etc.
+
+  They are authored as CSS variables so that:
+  - They are framework-agnostic
+  - They can be inspected and overridden at runtime
+  - The design system remains understandable without JavaScript
+
+  This file is intentionally:
+  - Pure CSS
+  - Free of Tailwind directives
+  - Free of build-tool configuration
+
+  What this file intentionally does NOT do:
+  - It does NOT reference Tailwind classes
+  - It does NOT contain @tailwind or @config directives
+  - It does NOT assume any particular framework or bundler
+
+  These tokens are consumed by:
+  - Tailwind utility mappings (via tailwind.config)
+  - Components (indirectly, through semantic utilities)
+
+  This separation preserves a clear boundary:
+  - semanticTokens.css = design meaning
+  - base.css            = framework plumbing
+  - components          = usage
+
+  If you are changing how something *looks*, this is usually the right file.
+  If you are changing how Tailwind is *wired*, this is not.
+*/
+
+:root {
+    /* Backgrounds */
+    --bg-primary: #ffffff;
+    --bg-primary-hover: #f8f9fa;
+    --bg-secondary: #f8f9fa;
+    --bg-secondary-hover: #edeff0;
+    --bg-tertiary: #edeff0;
+    --bg-tertiary-hover: #dadadc;
+    --bg-surface: #020617;
+  
+    /* Text */
+    --text-primary: #000000;
+    --text-secondary: #3C3D47;
+    --text-tertiary: #70727C;
+    --text-quaternary: #94959B;
+    --text-placeholder: #DADADC;
+    --text-error: #FF0000;
+    --text-success: #00AB5B;
+    --text-warning: #FFFF00;
+    --text-info: #0000FF;
+    --text-disabled: #C0C0C0;
+    --text-link: #0000FF;
+    --text-visited: #800080;
+
+     /* Accent */
+    --accent-primary: #38bdf8;
+    --accent-hover: #0ea5e9;
+
+    /* ----- Typography ----- */
+    /* Font Family */
+    --font-ui: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+   
+    /* Font Sizes */
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 2rem;
+    --font-size-h4: 1.5rem;
+    --font-size-h5: 1.25rem;
+    --font-size-h6: 1.125rem;
+    --font-size-body-1: 1rem;
+    --font-size-body-2: 0.875rem;
+    
+
+    /* Line Heights */
+    --line-height-h1: 1.1;
+    --line-height-h2: 1.15;
+    --line-height-h3: 1.2;
+    --line-height-h4: 1.25;
+    --line-height-h5: 1.3;
+    --line-height-h6: 1.35;
+    --line-height-body-1: 1.6;
+    --line-height-body-2: 1.6;
+    
+    /* Button Line Heights */
+    --line-height-button: 1.0; /* 100% */
+
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-heavy: 600;
+  
+  
+    /* Borders */
+    --border-primary: #BFBFC1;
+    --border-secondary: #DADADC;
+    --border-tertiary: #EDEFF0;
+
+    /* Foreground */
+    --fg-primary: var(--accent-primary);
+  
+
+
+    /* ======================================================
+       Button — Primary
+       ====================================================== */
+    --button-primary-bg: #3c3d47;
+    --button-primary-text: #ffffff;
+    --button-primary-bg-hover: #53545c;
+    --button-primary-bg-active: #1e40af;
+    --button-primary-bg-disabled: #a8a8ad;
+    --button-primary-text-disabled: #e2e8f0;
+    --button-primary-focus-ring: #93c5fd;
+  
+    /* ======================================================
+       Button — Secondary
+       ====================================================== */
+    --button-secondary-bg: #ffffff;
+    --button-secondary-text: #3c3d47;
+    --button-secondary-border: var(--button-primary-bg);
+    --button-secondary-bg-hover: #f8f9fa;
+    --button-secondary-bg-active: rgba(37, 99, 235, 0.16);
+    --button-secondary-text-disabled: #94a3b8;
+    --button-secondary-border-disabled: var(--button-primary-bg-disabled);
+    --button-secondary-bg-disabled: rgba(148, 163, 184, 0.08);
+    --button-secondary-focus-ring: #93c5fd;
+  
+    /* ======================================================
+       Button — Tertiary
+       ====================================================== */
+    --button-tertiary-bg: transparent;
+    --button-tertiary-text: #3c3d47;
+    --button-tertiary-bg-hover: #f4f5f6;
+    --button-tertiary-bg-active: rgba(37, 99, 235, 0.16);
+    --button-tertiary-text-disabled: #94a3b8;
+    --button-tertiary-bg-disabled: rgba(148, 163, 184, 0.08);
+    --button-tertiary-focus-ring: #93c5fd;
+  
+    /* ======================================================
+       Button — Quaternary
+       ====================================================== */
+    --button-quaternary-bg: transparent;
+    --button-quaternary-text: #848484;
+    --button-quaternary-bg-hover: #f4f5f6;
+    --button-quaternary-bg-active: rgba(37, 99, 235, 0.16);
+    --button-quaternary-text-disabled: #94a3b8;
+    --button-quaternary-bg-disabled: rgba(148, 163, 184, 0.08);
+    --button-quaternary-focus-ring: #93c5fd;
+
+    /* ======================================================
+       Button — Link
+       ====================================================== */
+    --button-link-text: #2563eb;
+    --button-link-text-hover: #1d4ed8;
+    --button-link-text-disabled: #94a3b8;
+  
+    /* ======================================================
+       Button — Destructive (Primary)
+       ====================================================== */
+    --button-destructive-primary-bg: #dc2626;
+    --button-destructive-primary-text: #ffffff;
+    --button-destructive-primary-bg-hover: #b91c1c;
+    --button-destructive-primary-bg-active: #991b1b;
+    --button-destructive-primary-bg-disabled: #fca5a5;
+    --button-destructive-primary-text-disabled: #fef2f2;
+    --button-destructive-focus-ring: #fca5a5;
+  
+    /* ======================================================
+       Button — Destructive (Secondary)
+       ====================================================== */
+    --button-destructive-secondary-text: #dc2626;
+    --button-destructive-secondary-border: #dc2626;
+    --button-destructive-secondary-bg-hover: rgba(220, 38, 38, 0.08);
+    --button-destructive-secondary-bg-active: rgba(220, 38, 38, 0.16);
+    --button-destructive-secondary-text-disabled: #fca5a5;
+    --button-destructive-secondary-border-disabled: #fecaca;
+    --button-destructive-secondary-bg-disabled: rgba(252, 165, 165, 0.08);
+
+    /* ======================================================
+       Button — Spacing & Shape
+       ====================================================== */
+    
+    /* Button Font Sizes */
+    --font-size-button-sm: 0.875rem;  /* 12px */
+    --font-size-button-md: 1rem; /* 14px */
+    --font-size-button-lg: 1.125rem;    /* 16px */
+    --font-size-button-2xl: 1.5rem; /* 18px */
+
+       /* Border Radius */
+    --button-border-radius: 9999px; /* full/pill shape */
+
+    /* Icon Spacing */
+    --button-icon-gap: 0.5rem; /* 8px - spacing between icons and text */
+
+    /* Icon-Only Button Padding (circular buttons - equal on all sides) */
+    --button-icon-only-padding-sm: 0.5rem;  /* 8px - for sm size */
+    --button-icon-only-padding-md: 0.625rem; /* 10px - for md size */
+    --button-icon-only-padding-lg: 0.75rem;  /* 12px - for lg size */
+    --button-icon-only-padding-2xl: 0.875rem; /* 14px - for 2xl size */
+
+    /* Padding - Small */
+    --button-padding-x-sm: 1rem;  
+    --button-padding-y-sm: 0.5rem;
+
+    /* Padding - Medium */
+    --button-padding-x-md: 1.25rem;
+    --button-padding-y-md: 0.625rem;
+
+    /* Padding - Large */
+    --button-padding-x-lg: 1.5rem;  
+    --button-padding-y-lg: 0.75rem; 
+
+    /* Padding - 2XL */
+    --button-padding-x-2xl: 1.75rem;
+    --button-padding-y-2xl: 0.9rem; 
+
+    /* ======================================================
+       Checkbox
+       ====================================================== */
+    /* Unchecked state */
+    --checkbox-bg: var(--bg-primary);
+    --checkbox-border: var(--border-primary);
+    
+    /* Checked/Selected state - uses button-primary-bg for background */
+    --checkbox-checked-bg: var(--button-primary-bg);
+    --checkbox-checked-border: var(--button-primary-bg);
+    --checkbox-check: var(--button-primary-text); /* White checkmark */
+    
+    /* Indeterminate state - same as checked */
+    --checkbox-indeterminate-bg: var(--button-primary-bg);
+    --checkbox-indeterminate-border: var(--button-primary-bg);
+    --checkbox-indeterminate-dash: var(--button-primary-text); /* White dash */
+    
+    /* Hover state */
+    --checkbox-hover-bg: var(--bg-primary);
+    --checkbox-hover-border: var(--border-primary);
+    
+    /* Focus ring - uses button focus ring color */
+    --checkbox-focus-ring: var(--button-primary-focus-ring);
+    
+    /* Disabled unchecked state */
+    --checkbox-disabled-bg: var(--bg-primary);
+    --checkbox-disabled-border: var(--button-primary-bg-disabled);
+    
+    /* Disabled checked/indeterminate state */
+    --checkbox-disabled-checked-bg: var(--button-primary-bg-disabled);
+    --checkbox-disabled-checked-border: var(--button-primary-bg-disabled);
+    --checkbox-disabled-check: var(--button-primary-text-disabled); /* Light grey checkmark */
+    --checkbox-disabled-indeterminate-dash: var(--button-primary-text-disabled);
+
+    /* ======================================================
+       Radio
+       ====================================================== */
+    /* Unselected state */
+    --radio-bg: var(--bg-primary);
+    --radio-border: var(--border-primary);
+    
+    /* Selected state - uses button-primary-bg for fill and border */
+    --radio-dot: var(--button-primary-bg); /* Inner dot fill */
+    --radio-selected-border: var(--button-primary-bg); /* Outer border when selected */
+    
+    /* Hover state */
+    --radio-hover-bg: var(--bg-primary);
+    --radio-hover-border: var(--border-primary);
+    
+    /* Focus ring - uses button focus ring color */
+    --radio-focus-ring: var(--button-primary-focus-ring);
+    
+    /* Disabled unselected state */
+    --radio-disabled-bg: var(--bg-primary);
+    --radio-disabled-border: var(--button-primary-bg-disabled);
+    
+    /* Disabled selected state */
+    --radio-disabled-dot: var(--button-primary-bg-disabled); /* Light grey dot */
+    --radio-disabled-selected-border: var(--button-primary-bg-disabled); /* Light grey border */
+
+    /* ======================================================
+       Input
+       ====================================================== */
+    --input-bg: var(--bg-primary);
+    --input-border: var(--border-primary);
+    --input-placeholder: var(--text-tertiary);
+    --input-focus-ring: var(--fg-primary);
+
+    /* ======================================================
+       Tab
+       ====================================================== */
+    /* Border */
+    --tab-border-width: 0.125rem; /* 2px - border-b-2 */
+    --tab-border-selected: var(--fg-primary); /* Selected tab bottom border */
+    --tab-border-default: transparent; /* No border for unselected */
+
+    /* Text Colors - Light Theme */
+    --tab-text-selected: #000000; /* Fg/fg-primary from Figma */
+    --tab-text-default: #94959b; /* Fg/fg-quaternary from Figma */
+    --tab-text-hover: #000000; /* Same as selected on hover */
+
+    /* Icon Colors */
+    --tab-icon-selected: #000000; /* Match selected text */
+    --tab-icon-default: #94959b; /* Match unselected text */
+    --tab-icon-hover: #000000; /* Match hover text */
+
+    /* Icon Spacing */
+    --tab-icon-gap: 0.5rem; /* 8px - spacing between icons and text */
+
+    /* Background Colors */
+    --tab-bg-hover: #f9fafb; /* button-secondary-bg_hover from Figma */
+
+    /* Padding - Small */
+    --tab-padding-x-sm: 0.5rem;   /* 8px - px-2 */
+    --tab-padding-y-sm: 0.25rem;  /* 4px - py-1 */
+
+    /* Padding - Medium */
+    --tab-padding-x-md: 1rem;     /* 16px - px-4 */
+    --tab-padding-y-md: 0.5rem;   /* 8px - py-2 */
+
+    /* Padding - Large */
+    --tab-padding-x-lg: 1.5rem;   /* 24px - px-6 */
+    --tab-padding-y-lg: 0.75rem;  /* 12px - py-3 */
+
+    /* Typography */
+    --tab-font-size-sm: 0.875rem;  /* 14px */
+    --tab-font-size-md: 1rem;      /* 16px - body1 size */
+    --tab-font-size-lg: 1.125rem;  /* 18px */
+    --tab-line-height: 1.6;       /* Match body1 line-height */
+    --tab-font-weight-normal: var(--font-weight-normal);
+    --tab-font-weight-heavy: var(--font-weight-heavy);
+
+    /* Focus Ring */
+    --tab-focus-ring: #000000; /* Match selected border */
+  }

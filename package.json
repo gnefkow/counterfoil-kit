@@ -1,0 +1,86 @@
+{
+  "name": "counterfoil-starter-kit",
+  "version": "1.0.0",
+  "description": "A modular React component library with semantic design tokens",
+  "scripts": {
+    "validate": "node scripts/validate-components.mjs",
+    "predev": "node scripts/validate-components.mjs",
+    "dev": "vite",
+    "prebuild": "node scripts/validate-components.mjs",
+    "build": "vite build",
+    "build:lib": "vite build --config vite.lib.config.ts && node scripts/build-styles.mjs",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "design-system",
+    "tailwind"
+  ],
+  "author": "nefko",
+  "license": "ISC",
+  "type": "module",
+  "main": "./dist/counterfoil-kit.umd.js",
+  "module": "./dist/counterfoil-kit.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/counterfoil-kit.es.js",
+      "require": "./dist/counterfoil-kit.umd.js"
+    },
+    "./styles": {
+      "import": "./dist/styles.css",
+      "require": "./dist/styles.css"
+    },
+    "./styles/semanticTokens.css": {
+      "import": "./dist/semanticTokens.css",
+      "require": "./dist/semanticTokens.css"
+    },
+    "./styles/base.css": {
+      "import": "./dist/base.css",
+      "require": "./dist/base.css"
+    },
+    "./tailwind-preset": "./tailwind.config.cjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "tailwind.config.cjs",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.2",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.3.0",
+    "storybook": "^10.2.6",
+    "@storybook/react-vite": "^10.2.6",
+    "@chromatic-com/storybook": "^5.0.0",
+    "@storybook/addon-vitest": "^10.2.6",
+    "@storybook/addon-a11y": "^10.2.6",
+    "@storybook/addon-docs": "^10.2.6",
+    "@storybook/addon-onboarding": "^10.2.6",
+    "vitest": "^4.0.18",
+    "playwright": "^1.58.1",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18"
+  }
+}

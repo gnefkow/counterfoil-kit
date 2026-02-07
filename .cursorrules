@@ -1,0 +1,13 @@
+This project follows a strict modular design philosophy.
+
+Core constraints:
+- No monolithic or “god” files
+- Components must be small and composable
+- Styling is semantic and abstracted via tokens/utilities
+- Logic is separated from presentation
+- Assume a real application, not a demo
+
+The canonical, detailed philosophy lives in:
+0_resources/design_philosophy.md
+
+When in doubt, defer to that document.
