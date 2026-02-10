@@ -1,0 +1,39 @@
+1) Audience + promise
+Primary reader: Who exactly (titles/roles), and what’s their “starting point” (what do they already know well vs misunderstand)?
+One-sentence promise: If the back cover had one claim, what is it?
+Outcome tests: What are 3 things a reader should be able to do after reading (as observable behaviors, not “understand”)?
+2) Scope boundaries (Primer vs Reference vs “not in this book”)
+Hard exclusions: What topics must NOT appear in the Primer even if relevant? (e.g. “how to use Counterfoil components”, “how to write React”, “how to publish npm packages”)
+Reference Guide dependency: Should the Primer assume the Reference exists, or be valuable standalone?
+Counterfoil specificity: Should Primer be mostly framework-agnostic concepts with Counterfoil as an example, or explicitly “Counterfoil-first” throughout?
+3) Page budget + depth tradeoffs
+Page budget reality: Is 60 pages fixed, or can it vary (e.g. 40 / 80)? Any printing/layout constraints?
+Depth preference: Would you rather have (A) fewer topics, deeper, with exercises/checklists, or (B) broader survey with crisp heuristics?
+Reader patience: What’s the expected reading mode—one sitting, weekend, or “dip in”?
+4) Structure: the “spine” of the book
+Best organizing metaphor: Which should be the main spine?
+(A) Layers model (meaning → interface → implementation → distribution)
+(B) Lifecycle (design → build → ship → maintain)
+(C) Decision-making (tradeoffs, constraints, evaluation)
+(D) Case study (evolving a toolkit over time)
+Preferred narrative: Do you want one running example (a tiny toolkit evolving each part), or independent chapters?
+5) React + web stack assumptions
+Platform commitment: Is this explicitly modern web + React + TypeScript, or should it generalize to “component-based UI” with React as one instance?
+React section goal: Should Part IV teach “how React works conceptually,” or only what you need to evaluate a React-shaped toolkit?
+Non-React readers: Do you care if someone using SwiftUI/Compose/Vue can still benefit, or is that out of scope?
+6) Toolchain content (big potential scope creep)
+Git/Vite/npm: Should Part VI stay in the Primer, move to an appendix, or become a separate “Tooling Primer” document?
+Expectation: Do you want readers to do these things (commands, workflows), or just gain vocabulary to follow engineering conversations?
+Org-specific workflow: Should it describe your actual Counterfoil repo practices, or keep it generic?
+7) Styling + tokens (aligning with your repo philosophy)
+Core stance: What is Counterfoil’s “point of view” on styling (tokens/utilities/theme APIs), and should the Primer explicitly argue for it?
+Must-cover concepts: Which are essential: semantic tokens vs raw tokens, CSS variables, cascade/specificity, utility classes, CSS-in-JS, design-to-code mapping?
+Practical vs conceptual: Should there be any implementation-level examples, or purely mental models and evaluation criteria?
+8) What to add, cut, or reorder from the current outline
+Top 3 chapters to keep as-is (most valuable).
+Top 3 chapters to cut or demote (appendix / link-out).
+Missing chapter: What’s the one chapter you feel is missing right now (e.g., accessibility, ergonomics, API governance, versioning strategy, documentation systems, contribution models)?
+9) Pedagogy + tone
+Voice: More “friendly narrative,” “pragmatic handbook,” or “argumentative essay with opinions”?
+Learning aids: Do you want any of these: end-of-chapter checklists, “red flags,” mini-quizzes, exercises, diagrams, glossary callouts?
+Examples: Should examples reference Counterfoil code directly, pseudocode only, or “famous public libraries” as reference points?

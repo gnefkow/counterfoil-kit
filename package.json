@@ -9,6 +9,8 @@
     "prebuild": "node scripts/validate-components.mjs",
     "build": "vite build",
     "build:lib": "vite build --config vite.lib.config.ts && node scripts/build-styles.mjs",
+    "prepare": "npm run build:lib",
+    "prepack": "npm run build:lib",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

@@ -5,6 +5,9 @@ node_modules/
 
 # Build outputs
 dist/
+
+# Verification test project
+.verify-consumer/
 build/
 *.tsbuildinfo
 
