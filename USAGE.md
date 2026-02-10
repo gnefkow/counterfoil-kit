@@ -31,7 +31,24 @@ import { Input, Checkbox } from 'counterfoil-starter-kit/components/form'
 
 ### 3. Import Styles
 
-**Option A: Import in your main CSS file**
+**For Tailwind v4 (or zero-config setup)**
+
+If you use Tailwind v4 or want to avoid Tailwind configuration, import these two files. No `@source` or content paths needed:
+
+```css
+/* src/index.css or src/main.css */
+@import 'counterfoil-starter-kit/styles/semanticTokens.css';
+@import 'counterfoil-starter-kit/styles/CounterfoilComponents.css';
+```
+
+Or in JavaScript/TypeScript:
+
+```tsx
+import 'counterfoil-starter-kit/styles/semanticTokens.css'
+import 'counterfoil-starter-kit/styles/CounterfoilComponents.css'
+```
+
+**Option A: Import combined styles (Tailwind v3)**
 
 ```css
 /* src/index.css or src/main.css */
@@ -47,7 +64,9 @@ import { createRoot } from 'react-dom/client'
 // ...
 ```
 
-### 4. Configure Tailwind (Optional but Recommended)
+### 4. Configure Tailwind (Optional for Tailwind v3)
+
+If you use Tailwind v3 and the combined `styles` import, configure Tailwind to use semantic tokens:
 
 To use semantic tokens with Tailwind utilities in your project:
 
@@ -252,7 +271,9 @@ This creates:
 - `dist/counterfoil-kit.es.js` - ES module build
 - `dist/counterfoil-kit.umd.js` - UMD build  
 - `dist/index.d.ts` - TypeScript declarations
-- `dist/styles.css` - Compiled CSS with semantic tokens
+- `dist/styles.css` - Combined CSS with semantic tokens
+- `dist/semanticTokens.css` - Design tokens only
+- `dist/CounterfoilComponents.css` - Pre-built utilities for Tailwind v4
 
 ## Troubleshooting
 
@@ -265,7 +286,9 @@ import 'counterfoil-starter-kit/styles'
 
 ### Tailwind utilities not working?
 
-Make sure you:
+**Tailwind v4 / zero-config:** Use the two-file import (`semanticTokens.css` + `CounterfoilComponents.css`). No Tailwind config required.
+
+**Tailwind v3 with preset:** Make sure you:
 1. Extended the Tailwind config with the preset
 2. Included the library in your `content` paths
 3. Have Tailwind configured in your project

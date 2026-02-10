@@ -30,14 +30,23 @@ import { Button, Card, Input, Stack } from 'counterfoil-starter-kit'
 
 ### 2. Import Styles
 
-**Option A: Import semantic tokens only (recommended if using Tailwind)**
+**Option A: Tailwind v4 or zero-config (recommended for new projects)**
+
+Import two files. No Tailwind config required. Works with Tailwind v4, which does not scan `node_modules`:
+
+```css
+@import 'counterfoil-starter-kit/styles/semanticTokens.css';
+@import 'counterfoil-starter-kit/styles/CounterfoilComponents.css';
+```
+
+**Option B: Import semantic tokens only (use with Tailwind preset)**
 
 ```css
 /* Import semantic tokens (pure CSS, ready to use) */
 @import 'counterfoil-starter-kit/styles/semanticTokens.css';
 ```
 
-**Option B: Import combined styles (includes Tailwind directives)**
+**Option C: Import combined styles (includes Tailwind directives)**
 
 ```css
 /* Import combined styles - base.css will be processed by your Tailwind setup */
@@ -47,14 +56,18 @@ import { Button, Card, Input, Stack } from 'counterfoil-starter-kit'
 Or in JavaScript/TypeScript:
 
 ```tsx
-// Semantic tokens only
+// Option A: Tailwind v4 / zero-config
+import 'counterfoil-starter-kit/styles/semanticTokens.css'
+import 'counterfoil-starter-kit/styles/CounterfoilComponents.css'
+
+// Option B: Semantic tokens only
 import 'counterfoil-starter-kit/styles/semanticTokens.css'
 
-// Or combined (includes Tailwind directives)
+// Option C: Combined (includes Tailwind directives)
 import 'counterfoil-starter-kit/styles'
 ```
 
-### 3. Configure Tailwind (Required for Tailwind utilities)
+### 3. Configure Tailwind (Required for Options B and C)
 
 To use semantic tokens with Tailwind utilities, extend your Tailwind config:
 
@@ -415,9 +428,11 @@ npm run build:lib
 
 This creates:
 - `dist/counterfoil-kit.es.js` - ES module build
-- `dist/counterfoil-kit.umd.js` - UMD build
+- `dist/counterfoil-kit.umd.js` - UMD build  
 - `dist/index.d.ts` - TypeScript declarations
-- `dist/styles.css` - Compiled CSS
+- `dist/styles.css` - Combined CSS with semantic tokens
+- `dist/semanticTokens.css` - Design tokens only
+- `dist/CounterfoilComponents.css` - Pre-built utilities for Tailwind v4
 
 ## Development
 

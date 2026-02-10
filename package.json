@@ -45,6 +45,10 @@
       "import": "./dist/base.css",
       "require": "./dist/base.css"
     },
+    "./styles/CounterfoilComponents.css": {
+      "import": "./dist/CounterfoilComponents.css",
+      "require": "./dist/CounterfoilComponents.css"
+    },
     "./tailwind-preset": "./tailwind.config.cjs",
     "./package.json": "./package.json"
   },

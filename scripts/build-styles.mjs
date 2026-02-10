@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from "fs"
 import { join, dirname } from "path"
 import { fileURLToPath } from "url"
+import { spawnSync } from "child_process"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -45,7 +46,21 @@ const base = readFileSync(join(repoRoot, "src/styles/base.css"), "utf-8")
 const combinedStyles = semanticTokens + "\n\n" + base
 writeFileSync(join(distDir, "styles.css"), combinedStyles)
 
+// Generate CounterfoilComponents.css (pre-built utilities for Tailwind v4 consumers)
+const result = spawnSync(
+  "npx",
+  [
+    "tailwindcss",
+    "-i", join(repoRoot, "src/styles/componentUtilitiesInput.css"),
+    "-o", join(distDir, "CounterfoilComponents.css"),
+    "--cwd", repoRoot
+  ],
+  { stdio: "inherit" }
+)
+if (result.status !== 0) process.exit(1)
+
 console.log("✓ Built CSS files:")
 console.log("  - dist/semanticTokens.css (ready to use)")
 console.log("  - dist/base.css (needs Tailwind processing)")
 console.log("  - dist/styles.css (combined, base.css still needs Tailwind)")
+console.log("  - dist/CounterfoilComponents.css (pre-built utilities for Tailwind v4)")

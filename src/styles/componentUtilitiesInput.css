@@ -1,0 +1,9 @@
+@config "../../tailwind.config.cjs";
+
+@layer base {
+  button {
+    padding: revert;
+  }
+}
+
+@tailwind utilities;
