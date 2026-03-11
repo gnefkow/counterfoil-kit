@@ -45,6 +45,8 @@ export function TableCell({
   onClick,
 }: TableCellProps) {
   const { density } = useTableContext()
+  const shouldWrapInText =
+    typeof children === "string" || typeof children === "number"
 
   const paddingClass = {
     sm: "px-2 py-1",
@@ -73,10 +75,12 @@ export function TableCell({
         .filter(Boolean)
         .join(" ")}
     >
-      {children !== undefined && children !== null ? (
+      {shouldWrapInText ? (
         <Text size="body2" hierarchy="secondary">
           {children}
         </Text>
+      ) : children !== undefined && children !== null ? (
+        children
       ) : null}
     </td>
   )

@@ -8,6 +8,6 @@ Core constraints:
 - Assume a real application, not a demo
 
 The canonical, detailed philosophy lives in:
-0_resources/design_philosophy.md
+docs/Counterfoil-Design-Philosophy.md
 
 When in doubt, defer to that document.

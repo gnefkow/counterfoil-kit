@@ -1,6 +1,13 @@
-# How to Use Counterfoil Kit in Your App
+### Add Counterfoil to an existing app (quick path)
 
-This guide will walk you through using Counterfoil Kit in a brand new React + TypeScript + Vite project. We'll assume you're starting from scratch and explain every step.
+If your app already exists and you only need to wire Counterfoil in:
+
+1. **Install the package:** `npm install counterfoil-starter-kit` (or use a local path / `npm link` as in Step 2.2).
+2. **Tailwind:** Ensure Tailwind is installed, then add Counterfoil's preset and content (Step 3.2): `presets: [require('counterfoil-starter-kit/tailwind-preset')]` and include `'./node_modules/counterfoil-starter-kit/dist/**/*.{js,jsx,ts,tsx}'` in your `content` array.
+3. **Styles:** In your main CSS file, at the top: `@import 'counterfoil-starter-kit/styles/semanticTokens.css';`
+4. **Optional:** Override design tokens in your own CSS (Step 6) and/or use the pre-built utility CSS if you're on Tailwind v4 (see Tailwind v4 note in Step 3).
+
+Then import components from `'counterfoil-starter-kit'` as in Step 5. **If you use the kit as a source dependency** (e.g. sibling directory instead of npm), import from the kit's root entry file so all components (including Tab, TabBar) are available—see [Consuming the kit as source](#consuming-the-kit-as-source-sibling-directory-or-monorepo) below. For exact props and types, use the package's TypeScript definitions.
 
 ## Prerequisites
 
@@ -133,6 +140,18 @@ npm link counterfoil-starter-kit
 
 **What this does:** Adds Counterfoil Kit to your project's `node_modules` folder so you can import it.
 
+### Consuming the kit as source (sibling directory or monorepo)
+
+When your app depends on Counterfoil Kit via a **file path** (e.g. sibling directory, monorepo package, or `npm link` to the kit repo) rather than the published npm package, **always import from the kit's single entry file** so you get all public components from one place:
+
+```ts
+import { Button, Stack, Tab, TabBar } from '../counterfoil-kit/src/index.ts'
+```
+
+(Adjust the path to match your project layout—e.g. `../../counterfoil-kit/src/index.ts` or the path your bundler resolves for the kit.)
+
+**Do not** import from internal barrels like `src/components/primitives` or `src/components/navigation` for different components. Tab and TabBar are exported from the **navigation** barrel, while Button, Card, Stack, Inline, and Text are in **primitives**. If you import only from `primitives`, you'll get "export not found" for TabBar and Tab will be undefined (which can cause a blank screen when React tries to render it). Using the root entry `src/index.ts` avoids that and matches how the built package works: one import, all components.
+
 ## Publishing and Updating Counterfoil Kit
 
 If you're maintaining Counterfoil Kit and want to publish updates, or if you're using Counterfoil Kit in an app and want to get the latest version, follow these steps.
@@ -190,6 +209,7 @@ ls dist
 # - styles.css
 # - semanticTokens.css
 # - base.css
+# - CounterfoilComponents.css
 ```
 
 #### Step 4: Login to npm (First Time Only)
@@ -432,6 +452,8 @@ export default {
 - `presets` - Uses Counterfoil Kit's Tailwind configuration
 - `content` - Tells Tailwind which files to scan for classes (including Counterfoil Kit components)
 
+**Tailwind v4:** If your app uses Tailwind v4, you can instead import the pre-built utility CSS: `@import 'counterfoil-starter-kit/styles/CounterfoilComponents.css';` (in addition to or instead of using the preset, depending on your setup). The preset above is Tailwind v3–style; both approaches are supported.
+
 ### 3.3 Save the File
 
 Save the file (Ctrl+S or Cmd+S).
@@ -574,145 +596,3 @@ In your main CSS file (`src/index.css`), import your theme **after** the Counter
 ### 6.4 Save and Refresh
 
 Save both files and refresh your browser. Your components should now use your custom colors!
-
-## Common Components You'll Use
-
-Here are some common components and how to use them:
-
-### Button
-
-```tsx
-import { Button } from 'counterfoil-starter-kit'
-
-<Button variant="primary" size="m" onClick={() => console.log('Clicked!')}>
-  Click Me
-</Button>
-```
-
-**Variants:** `primary`, `secondary`, `tertiary`, `link`, `destructive-primary`, `destructive-secondary`  
-**Sizes:** `xs`, `sm`, `m`, `lg`, `xl`  
-**Width:** `hug` (auto width) or `fill` (full width)
-
-### Card
-
-```tsx
-import { Card } from 'counterfoil-starter-kit'
-
-<Card>
-  <p>Content goes here</p>
-</Card>
-```
-
-### Stack (Vertical Layout)
-
-```tsx
-import { Stack } from 'counterfoil-starter-kit'
-
-<Stack gap="lg">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</Stack>
-```
-
-**Gap options:** `xs`, `sm`, `m`, `lg`, `xl`
-
-### Inline (Horizontal Layout)
-
-```tsx
-import { Inline } from 'counterfoil-starter-kit'
-
-<Inline gap="m" align="center">
-  <Button>Button 1</Button>
-  <Button>Button 2</Button>
-</Inline>
-```
-
-**Gap options:** `xs`, `sm`, `m`, `lg`, `xl`  
-**Align options:** `start`, `center`, `end`, `baseline`
-
-### Input
-
-```tsx
-import { Input, InputField } from 'counterfoil-starter-kit'
-
-// Just the input
-<Input type="text" placeholder="Enter text..." />
-
-// Input with label
-<InputField
-  label="Email"
-  type="email"
-  placeholder="you@example.com"
-/>
-```
-
-### Form Components
-
-```tsx
-import { CheckboxField, RadioField, TextareaField } from 'counterfoil-starter-kit'
-
-<CheckboxField label="I agree to terms" />
-<RadioField label="Option 1" name="choice" value="1" />
-<TextareaField label="Message" placeholder="Enter your message..." />
-```
-
-## Troubleshooting
-
-### "Module not found" error
-
-**Problem:** You see an error like `Cannot find module 'counterfoil-starter-kit'`
-
-**Solution:**
-1. Make sure you ran `npm install counterfoil-starter-kit` (or your local path)
-2. Check that you're in your project folder (`my-app`)
-3. Try deleting `node_modules` and running `npm install` again:
-   ```bash
-   rm -rf node_modules
-   npm install
-   ```
-
-### Components look unstyled
-
-**Problem:** Components render but don't have any styling
-
-**Solution:**
-1. Make sure you imported the styles: `@import 'counterfoil-starter-kit/styles/semanticTokens.css';`
-2. Check that your CSS file is imported in `main.tsx`
-3. Make sure Tailwind is configured correctly (step 3)
-4. Restart your dev server (`Ctrl + C` then `npm run dev`)
-
-### Tailwind classes don't work
-
-**Problem:** Classes like `bg-bg-primary` don't work
-
-**Solution:**
-1. Make sure you added the Tailwind preset in `tailwind.config.js` (step 3.2)
-2. Make sure your `content` array includes Counterfoil Kit's dist folder
-3. Restart your dev server
-
-### Colors don't change when I override them
-
-**Problem:** You added custom colors but nothing changed
-
-**Solution:**
-1. Make sure your theme file is imported **after** the Counterfoil Kit styles
-2. Check that you're using the correct CSS variable names (they start with `--`)
-3. Make sure you're overriding them in `:root`
-
-## Next Steps
-
-- Explore all the components in the Counterfoil Kit
-- Read the component source code to see how they work
-- Experiment with different color themes
-- Check out the `design_philosophy.md` file to understand the design principles
-
-## Getting Help
-
-If you're stuck:
-1. Check the browser console for errors (F12 → Console tab)
-2. Check your terminal for errors
-3. Make sure all files are saved
-4. Try restarting your dev server
-
-Happy coding! 🎉

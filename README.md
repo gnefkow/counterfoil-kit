@@ -10,6 +10,10 @@ A modular React component library with semantic design tokens, built with TypeSc
 - 🎯 **Tailwind CSS** - Utility-first styling with semantic tokens
 - 🔧 **Easy Customization** - Override tokens without touching component code
 
+## Documentation
+
+For setup, components, and usage, see [Our Docs](/docs/). This guide is included in the package when you install it—humans and AI assistants building with Counterfoil should read it for full instructions.
+
 ## Installation
 
 ```bash

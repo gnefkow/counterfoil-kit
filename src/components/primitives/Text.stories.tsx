@@ -22,6 +22,11 @@ const meta: Meta<typeof Text> = {
       control: 'select',
       options: ['normal', 'heavy'],
     },
+    as: {
+      control: 'select',
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label', 'div'],
+      description: 'Override the rendered HTML element. Defaults based on size.',
+    },
   },
 }
 
@@ -86,6 +91,19 @@ export const Combinations: Story = {
           Section description with tertiary hierarchy
         </Text>
       </div>
+    </Stack>
+  ),
+}
+
+export const ElementOverrides: Story = {
+  render: () => (
+    <Stack gap="lg">
+      <Text size="h1">Default h1 → renders &lt;h1&gt;</Text>
+      <Text size="h3" as="p">h3 size, but renders &lt;p&gt;</Text>
+      <Text size="body1">Default body1 → renders &lt;span&gt;</Text>
+      <Text size="body1" as="p">body1 size, but renders &lt;p&gt;</Text>
+      <Text size="body1" as="label">body1 size, renders &lt;label&gt;</Text>
+      <Text size="body2" as="div">body2 size, renders &lt;div&gt;</Text>
     </Stack>
   ),
 }

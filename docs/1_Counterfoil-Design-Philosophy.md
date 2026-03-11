@@ -1,8 +1,9 @@
-# design_philosophy
+# Counterfoil Design Philosophy
 
 This philosophy outlines the pattern preferences for how our code should work in this project. 
 
-
+### **Our Philosophical Basis**
+We assume that the builders who will use Counterfoil come with a "design" mindset. We think about "how things are used" first, and "how they are built" second. 
 
 ### **Application Design Philosophy**
 
@@ -10,7 +11,7 @@ This project follows a **modular, parsimonious design philosophy**. When generat
 
 #### 1. File and Module Structure
 
-- **No large “god files.”**
+- **No large "god files."**
   - A single file should rarely exceed ~150–200 lines.
   - If a file grows, extract logic into smaller modules immediately.
 - Separate concerns clearly:
@@ -23,9 +24,10 @@ This project follows a **modular, parsimonious design philosophy**. When generat
 #### 2. Components
 
 - Components should be **simple, composable, and narrowly scoped**.
-- Avoid monolithic “Main.tsx” or “App.tsx” files containing full app logic.
+- Avoid monolithic "Main.tsx" or "App.tsx" files containing full app logic.
 - Each component should:
   - do *one thing*
+    - "One thing" is defined from a **design perspective**, not an implementation perspective. For example, `Text` does one thing: apply typography treatment. The fact that it can render as `<h1>`, `<p>`, or `<span>` is an implementation detail—not multiple responsibilities. Primitives should map to design concepts, and smart defaults handle the underlying HTML semantics.
   - accept explicit props
   - delegate logic when possible
 - Favor composition over condition-heavy components.
@@ -78,5 +80,3 @@ Using standard protocols and packages is key to making things robust and easily 
 - We are LESS concerned with: elegance, efficiency, speed. 
 
 - We are MORE concerned with: standard patterns and packages, transparency, robustness.
-
- 

@@ -1,6 +1,7 @@
 READ-ME: Instructions for writing The Counterfoild Guide. 
 - Assume that the reader has taken a full stack web development bootcamp in the past, but it was a long time ago. They are familiar with the MERN stack, and work daily with software developers, but their understanding of code and coding principles was never deep and is now rusty. 
-- Write with a pragmatic, direct tone. This is a technical guide, to not use unecessary rhetorical flair. 
+- Write prose (paragraphs, not just bullet points) with a pragmatic, direct tone. This is a technical guide, to not use unecessary rhetorical flair. 
+- When possible, use examples of how something would be used in a real application, especially to discuss trade-offs in design or implementation choices. Assume this toolkit will be used to build the front-end code for everyday apps, enterprise tools, etc... and that the reader of this document will use it while working on teams of software developers who are experienced. 
 - Before writing a chapter, read the full Outline below to gather an understanding of how that chapter fits in the overall whole. 
 - Use examples directly from this codebase when possible
 - use markdown to put emphasis where needed
@@ -149,14 +150,14 @@ READ-ME: Instructions for writing The Counterfoild Guide.
   - Spread operator: `...items`
 - Modules: `import` and `export`
 
-### 2.2: What Are Types and Why Do They Matter? (2 pages)
+### 2.2: What Are Types and Why Do They Matter? (8-12 pages)
 
 - The problem types solve: catching mistakes early
 - Real-world analogy: types are like labels on boxes
 - What happens without types: runtime errors, confusion
 - What happens with types: errors before you run code, clarity
 
-### 2.3: Understanding TypeScript - Types in Practice (10 pages)
+### 2.3: Understanding TypeScript - Types in Practice (16 pages)
 
 - What TypeScript is: JavaScript with type annotations
 - How TypeScript works: it checks your code, then compiles to JavaScript

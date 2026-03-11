@@ -13,17 +13,17 @@ type StackProps = {
 }
 
 /* ======================================================
-   Class map
-   "gap" comes from tailwindcss. It's a utility class that sets the gap between items.
-   gap-1 is 4px, or .25rem, gap-2 is 8px, or .5rem, gap-4 is 16px(1rem), or 1rem, gap-6 is 24px, or 1.5rem, gap-8 is 32px, or 2rem.
+   Gap map
+   Uses CSS variables so apps can override for denser/looser spacing.
+   Defaults defined in semanticTokens.css.
    ====================================================== */
 
-const gapClasses: Record<StackGap, string> = {
-  xs: "gap-1",
-  sm: "gap-2",
-  m: "gap-4",
-  lg: "gap-6",
-  xl: "gap-8",
+const gapVars: Record<StackGap, string> = {
+  xs: "var(--gap-xs)",
+  sm: "var(--gap-sm)",
+  m: "var(--gap-m)",
+  lg: "var(--gap-lg)",
+  xl: "var(--gap-xl)",
 }
 
 /* ======================================================
@@ -32,7 +32,10 @@ const gapClasses: Record<StackGap, string> = {
 
 export function Stack({ children, gap = "m", className }: StackProps) {
   return (
-    <div className={[`flex flex-col ${gapClasses[gap]}`, className].filter(Boolean).join(" ")}>
+    <div
+      className={["flex flex-col", className].filter(Boolean).join(" ")}
+      style={{ gap: gapVars[gap] }}
+    >
       {children}
     </div>
   )

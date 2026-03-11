@@ -15,15 +15,17 @@ type InlineProps = {
 }
 
 /* ======================================================
-   Class maps
+   Gap map
+   Uses CSS variables so apps can override for denser/looser spacing.
+   Defaults defined in semanticTokens.css.
    ====================================================== */
 
-const gapClasses: Record<InlineGap, string> = {
-  xs: "gap-1",
-  sm: "gap-2",
-  m: "gap-4",
-  lg: "gap-6",
-  xl: "gap-8",
+const gapVars: Record<InlineGap, string> = {
+  xs: "var(--gap-xs)",
+  sm: "var(--gap-sm)",
+  m: "var(--gap-m)",
+  lg: "var(--gap-lg)",
+  xl: "var(--gap-xl)",
 }
 
 const alignClasses: Record<InlineAlign, string> = {
@@ -58,11 +60,8 @@ export function Inline({
 }: InlineProps) {
   return (
     <div
-      className={[
-        "flex flex-row",
-        gapClasses[gap],
-        alignClasses[align],
-      ].join(" ")}
+      className={["flex flex-row", alignClasses[align]].join(" ")}
+      style={{ gap: gapVars[gap] }}
     >
       {children}
     </div>
